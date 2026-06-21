@@ -46,9 +46,3 @@ bun run verify
 | `prompts/` | Prompt templates. |
 | `themes/` | Custom themes. |
 | `scripts/` | Sync, install, and verification helpers. |
-
-## Intentionally excluded
-
-The repo excludes auth, OAuth stores, session history, caches, SQLite databases, env files, binaries, package install directories, disabled resources, and generated run history. See `.gitignore` and `scripts/verify-no-secrets.mjs`.
-
-Some entries in `configs/pi-agent/settings.json` are machine-local snapshots, such as local project package paths. They document my machine setup and may need editing before another person installs the full config snapshot.
