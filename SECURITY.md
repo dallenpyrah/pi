@@ -12,5 +12,5 @@ Do not commit:
 Run this before pushing:
 
 ```bash
-npm run verify
+bun run verify
 ```

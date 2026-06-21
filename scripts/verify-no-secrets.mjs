@@ -58,8 +58,8 @@ const textExtensions = new Set([
   ".txt",
   ".yaml",
   ".yml",
+  ".lock",
 ]);
-
 const failures = [];
 
 function extensionOf(path) {
@@ -85,7 +85,7 @@ function walk(dir) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
     const rel = relative(root, path);
-    if (entry.name === ".git") continue;
+    if (entry.name === ".git" || entry.name === "node_modules") continue;
     checkPath(path);
     if (entry.isDirectory()) {
       walk(path);
