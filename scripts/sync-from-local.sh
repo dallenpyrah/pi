@@ -28,7 +28,7 @@ if [ -d "$PI_HOME/skills" ]; then
   rsync -aL "${COMMON_EXCLUDES[@]}" "$PI_HOME/skills/" "$ROOT/skills/"
 fi
 if [ -d "$PI_HOME/extensions" ]; then
-  rsync -a --delete "${COMMON_EXCLUDES[@]}" --exclude='*.tar.gz' "$PI_HOME/extensions/" "$ROOT/extensions/"
+  rsync -a --delete "${COMMON_EXCLUDES[@]}" --exclude='*.tar.gz' --exclude='semantic-search/' "$PI_HOME/extensions/" "$ROOT/extensions/"
   rm -f "$ROOT/extensions/package.json" "$ROOT/extensions/package-lock.json"
 fi
 if [ -d "$PI_HOME/prompts" ]; then

@@ -49,14 +49,28 @@ bun run verify
 
 ## Catalog
 
-### Extensions
+### Installed packages and extensions
 
-| Extension | Why it is here / what it is for |
-| --- | --- |
-| `extensions/fff-defaults.ts` | Makes FFF-backed search and AST search the default guidance so Pi explores repos with fast, structural tools first. |
-| `extensions/pi-better-openai.json` | Stores local Better OpenAI settings for subscription models, usage display, footer behavior, and image defaults. |
-| `extensions/pi-openai-fast-mode/config.json` | Keeps OpenAI fast-mode configuration so lightweight work can route through faster model defaults. |
-| `extensions/semantic-search/index.ts` | Bridges Pi into the local semantic-search extension for meaning-based code and history search. |
+| Extension/package | Source | Why it is here / what it is for |
+| --- | --- | --- |
+| FFF Search | `npm:@ff-labs/pi-fff` | Replaces file/content search with FFF-backed ranked search, multi-grep, and `@` autocomplete for faster repo discovery. |
+| Context Mode | `npm:context-mode` | Adds sandbox execution, file/output indexing, FTS search, fetch-and-index, and diagnostics so large logs/docs/test output do not flood chat context. |
+| Pi Subagents | `npm:pi-subagents` | Runs delegated child agents, chains, parallel fan-out, async status checks, and optional worktree isolation for review and broad analysis. |
+| Goal Mode | `npm:@narumitw/pi-goal` | Adds `/goal` and `goal_complete` so long tasks keep moving until verified completion. |
+| Computer Use | `npm:@amaster.ai/pi-computer-use` | Adds desktop automation tools for local GUI actions outside browser automation. |
+| Agent Browser Native | `npm:pi-agent-browser-native` | Adds `agent_browser` for browser workflows, web QA, screenshots, extraction, login flows, and Electron app automation. |
+| Dynamic Workflows | `npm:@quintinshaw/pi-dynamic-workflows` | Adds the `workflow` tool for deterministic JavaScript-orchestrated multi-agent fan-out/fan-in. |
+| MCP Adapter | `npm:pi-mcp-adapter` | Adds a single `mcp` gateway for discovering and calling MCP server tools without loading every schema into the prompt. |
+| Plannotator | `npm:@plannotator/pi-extension` | Adds browser-based markdown plan review, annotation, and approval flows for human feedback before implementation. |
+| Amp themes/UI | `npm:amp-themes` with `amp-appearance`, `amp-editor`, `amp-user-message` | Provides the `amp-dark` theme plus Amp-style appearance switching, editor chrome, and compact user-message rendering. |
+| Structured questions | `npm:@juicesharp/rpiv-ask-user-question` | Adds `ask_user_question` for structured clarification when requirements are ambiguous. |
+| AST search/replace | `npm:pi-diet-ast` | Adds `ast_grep_search` and dry-run-first `ast_grep_replace` for syntax-aware code discovery and codemods. |
+| Hashline edit | `npm:pi-hashline-edit` | Replaces plain edits with hash-anchored reads/edits so stale-context mutations are rejected. |
+| Tmux Bash | `npm:@richardgill/pi-tmux-bash` | Runs shell commands in tmux windows with stable IDs, background polling, and inspection controls for long-running commands. |
+| OpenAI Fast Mode | `npm:pi-openai-fast-mode` | Adds `/fast` and `--fast` priority-tier toggles for configured GPT-5.4/5.5 OpenAI targets. |
+| Exa web research | `git:https://github.com/dallenpyrah/pi-exa.git` | Adds native Exa tools for live web search, sourced answers, content extraction, similar pages, code/company/people lookup, and deep research. |
+| Semantic Search | `git:https://github.com/dallenpyrah/pi-semantic-search.git` | Adds `semantic_search` for hybrid code, history, and conversation search as the first-pass codebase discovery layer. |
+| FFF defaults | `extensions/fff-defaults.ts` | Local extension that sets FFF mode and injects guidance to prefer FFF and AST search before raw shell search. |
 
 ### Skills
 

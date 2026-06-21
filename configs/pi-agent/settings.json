@@ -27,7 +27,8 @@
     "npm:pi-hashline-edit",
     "npm:@richardgill/pi-tmux-bash",
     "npm:pi-openai-fast-mode",
-    "../../projects/rika-labs/pi-exa"
+    "git:https://github.com/dallenpyrah/pi-exa.git",
+    "git:https://github.com/dallenpyrah/pi-semantic-search.git"
   ],
   "theme": "amp-dark",
   "extensions": [
