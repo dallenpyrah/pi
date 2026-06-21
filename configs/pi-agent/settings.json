@@ -1,0 +1,36 @@
+{
+  "defaultModel": "gpt-5.5",
+  "defaultProvider": "openai-codex",
+  "defaultThinkingLevel": "xhigh",
+  "transport": "websocket-cached",
+  "lastChangelogVersion": "0.79.9",
+  "packages": [
+    "npm:@ff-labs/pi-fff",
+    "npm:context-mode",
+    "npm:pi-subagents",
+    "npm:@narumitw/pi-goal",
+    "npm:@amaster.ai/pi-computer-use",
+    "npm:pi-agent-browser-native",
+    "npm:@quintinshaw/pi-dynamic-workflows",
+    "npm:pi-mcp-adapter",
+    "npm:@plannotator/pi-extension",
+    {
+      "source": "npm:amp-themes",
+      "extensions": [
+        "extensions/amp-appearance.ts",
+        "extensions/amp-editor.ts",
+        "extensions/amp-user-message.ts"
+      ]
+    },
+    "npm:@juicesharp/rpiv-ask-user-question",
+    "npm:pi-diet-ast",
+    "npm:pi-hashline-edit",
+    "npm:@richardgill/pi-tmux-bash",
+    "npm:pi-openai-fast-mode",
+    "../../projects/rika-labs/pi-exa"
+  ],
+  "theme": "amp-dark",
+  "extensions": [
+    "extensions/fff-defaults.ts"
+  ]
+}

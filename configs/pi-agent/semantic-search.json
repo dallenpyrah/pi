@@ -1,0 +1,20 @@
+{
+  "indexing": {
+    "excludeDirs": [
+      "repos",
+      "vendor",
+      "third_party",
+      "subagent-reports"
+    ],
+    "excludePathPatterns": [
+      "*.min.js",
+      "**/*.min.js",
+      "*.min.css",
+      "**/*.min.css",
+      "*.map",
+      "**/*.map",
+      "*.snap",
+      "**/*.snap"
+    ]
+  }
+}

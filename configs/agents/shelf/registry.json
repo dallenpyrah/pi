@@ -1,0 +1,36 @@
+{
+	"projects": [
+		"/Users/dallen.pyrah/projects/rika-labs/orika",
+		"/Users/dallen.pyrah/projects/platform",
+		"/Users/dallen.pyrah/projects/platform/.claude/worktrees/agent-a93eb62b",
+		"/var/folders/8p/57q2vqk146l_6d9wjhmhmsqw0000gp/T/shelf-install-test-KlhgVK",
+		"/var/folders/8p/57q2vqk146l_6d9wjhmhmsqw0000gp/T/shelf-install-test-gELZfZ",
+		"/var/folders/8p/57q2vqk146l_6d9wjhmhmsqw0000gp/T/shelf-install-test-yQWUsY",
+		"/var/folders/8p/57q2vqk146l_6d9wjhmhmsqw0000gp/T/shelf-install-test-pmaYue",
+		"/Users/dallen.pyrah/projects/steward",
+		"/Users/dallen.pyrah/conductor/workspaces/steward/davis"
+	],
+	"manual": [
+		"@codemirror/theme-one-dark",
+		"@uiw/codemirror-theme-basic",
+		"@commitlint/cli",
+		"@rikalabs/oxlint-standards",
+		"@rikalabs/repo-lint",
+		"@semantic-release/commit-analyzer",
+		"@semantic-release/github",
+		"@semantic-release/release-notes-generator",
+		"concurrently",
+		"cspell",
+		"husky",
+		"knip",
+		"markdownlint-cli",
+		"oxfmt",
+		"oxlint-tsgolint",
+		"semantic-release",
+		"ghostty-web",
+		"libghostty",
+		"t3code",
+		"codex",
+		"evilcharts"
+	]
+}

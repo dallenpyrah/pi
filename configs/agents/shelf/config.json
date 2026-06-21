@@ -1,0 +1,390 @@
+{
+	"version": 1,
+	"syncIntervalMinutes": 60,
+	"repos": [
+		{
+			"url": "git@github.com:blackboardsh/electrobun.git",
+			"alias": "electrobun",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-03-30T02:35:27.365Z",
+			"lastSyncedAt": "2026-04-09T05:47:47.983Z"
+		},
+		{
+			"url": "git@github.com:codemirror/dev.git",
+			"alias": "codemirror",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-03-30T02:35:30.454Z",
+			"lastSyncedAt": "2026-04-09T05:47:50.677Z"
+		},
+		{
+			"url": "git@github.com:Effect-TS/effect-smol.git",
+			"alias": "effect",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-03-30T02:35:37.259Z",
+			"lastSyncedAt": "2026-04-09T05:47:53.803Z"
+		},
+		{
+			"url": "https://github.com/radix-ui/primitives.git",
+			"alias": "radix-ui",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:30:59.642Z",
+			"lastSyncedAt": "2026-04-09T05:47:54.660Z"
+		},
+		{
+			"url": "https://github.com/TanStack/table.git",
+			"alias": "tanstack-table",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:31:00.929Z",
+			"lastSyncedAt": "2026-04-09T05:47:55.606Z"
+		},
+		{
+			"url": "https://github.com/47ng/nuqs.git",
+			"alias": "nuqs",
+			"pin": {
+				"type": "branch",
+				"value": "next"
+			},
+			"addedAt": "2026-04-02T16:31:03.425Z",
+			"lastSyncedAt": "2026-04-09T05:47:56.393Z"
+		},
+		{
+			"url": "https://github.com/bvaughn/react-resizable-panels.git",
+			"alias": "react-resizable-panels",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:31:04.332Z",
+			"lastSyncedAt": "2026-04-09T05:47:57.245Z"
+		},
+		{
+			"url": "https://github.com/motiondivision/motion.git",
+			"alias": "motion",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:31:17.767Z",
+			"lastSyncedAt": "2026-04-09T05:47:58.260Z"
+		},
+		{
+			"url": "https://github.com/date-fns/date-fns.git",
+			"alias": "date-fns",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:31:19.120Z",
+			"lastSyncedAt": "2026-04-09T05:47:59.149Z"
+		},
+		{
+			"url": "https://github.com/testing-library/user-event.git",
+			"alias": "user-event",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:31:19.803Z",
+			"lastSyncedAt": "2026-04-09T05:47:59.980Z"
+		},
+		{
+			"url": "https://github.com/microsoft/TypeScript.git",
+			"alias": "typescript",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-02T16:31:38.901Z",
+			"lastSyncedAt": "2026-04-09T05:48:01.102Z"
+		},
+		{
+			"url": "https://github.com/uiwjs/react-codemirror.git",
+			"alias": "@uiw/codemirror-theme-basic",
+			"addedAt": "2026-04-07T21:21:31.358Z",
+			"lastSyncedAt": "2026-04-09T05:48:01.637Z"
+		},
+		{
+			"url": "https://github.com/semantic-release/github.git",
+			"alias": "@semantic-release/github",
+			"addedAt": "2026-04-07T21:21:31.924Z",
+			"lastSyncedAt": "2026-04-09T05:48:02.143Z"
+		},
+		{
+			"url": "https://github.com/typicode/husky.git",
+			"alias": "husky",
+			"addedAt": "2026-04-07T21:21:32.602Z",
+			"lastSyncedAt": "2026-04-09T05:48:02.660Z"
+		},
+		{
+			"url": "https://github.com/oxc-project/oxc.git",
+			"alias": "oxfmt",
+			"addedAt": "2026-04-07T21:21:36.234Z",
+			"lastSyncedAt": "2026-04-09T05:48:03.275Z"
+		},
+		{
+			"url": "git@github.com:vercel/ai.git",
+			"alias": "ai-sdk",
+			"pin": {
+				"type": "tag",
+				"value": "ai@6.0.137"
+			},
+			"addedAt": "2026-04-07T21:25:09.689Z",
+			"lastSyncedAt": "2026-04-09T05:48:05.269Z"
+		},
+		{
+			"url": "https://github.com/ghostty-org/ghostty.git",
+			"alias": "libghostty",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-07T21:27:05.498Z",
+			"lastSyncedAt": "2026-04-09T05:48:06.080Z"
+		},
+		{
+			"url": "git@github.com:facebook/react.git",
+			"alias": "react",
+			"pin": {
+				"type": "tag",
+				"value": "v19.2.4"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:07.523Z"
+		},
+		{
+			"url": "git@github.com:tailwindlabs/tailwindcss.git",
+			"alias": "tailwindcss",
+			"pin": {
+				"type": "tag",
+				"value": "v4.1.18"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:08.901Z"
+		},
+		{
+			"url": "git@github.com:pmndrs/zustand.git",
+			"alias": "zustand",
+			"pin": {
+				"type": "tag",
+				"value": "v5.0.12"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:10.296Z"
+		},
+		{
+			"url": "git@github.com:xyflow/xyflow.git",
+			"alias": "xyflow",
+			"pin": {
+				"type": "tag",
+				"value": "@xyflow/react@12.10.0"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:11.701Z"
+		},
+		{
+			"url": "git@github.com:xtermjs/xterm.js.git",
+			"alias": "xterm",
+			"pin": {
+				"type": "branch",
+				"value": "master"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:14.345Z"
+		},
+		{
+			"url": "git@github.com:kpdecker/jsdiff.git",
+			"alias": "jsdiff",
+			"pin": {
+				"type": "branch",
+				"value": "master"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:16.980Z"
+		},
+		{
+			"url": "https://github.com/shadcn-ui/ui.git",
+			"alias": "shadcn-ui",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:17.860Z"
+		},
+		{
+			"url": "git@github.com:drizzle-team/drizzle-orm.git",
+			"alias": "drizzle-orm",
+			"pin": {
+				"type": "tag",
+				"value": "0.45.1"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:19.313Z"
+		},
+		{
+			"url": "git@github.com:vitejs/vite.git",
+			"alias": "vite",
+			"pin": {
+				"type": "tag",
+				"value": "v6.0.3"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:20.907Z"
+		},
+		{
+			"url": "git@github.com:pacocoursey/next-themes.git",
+			"alias": "next-themes",
+			"pin": {
+				"type": "tag",
+				"value": "v0.4.6"
+			},
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:22.358Z"
+		},
+		{
+			"url": "https://github.com/codemirror/theme-one-dark.git",
+			"alias": "@codemirror/theme-one-dark",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:22.864Z"
+		},
+		{
+			"url": "https://github.com/conventional-changelog/commitlint.git",
+			"alias": "@commitlint/cli",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:23.402Z"
+		},
+		{
+			"url": "https://github.com/Rika-Labs/oxlint-standards.git",
+			"alias": "@rikalabs/oxlint-standards",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:23.910Z"
+		},
+		{
+			"url": "https://github.com/Rika-Labs/repo-lint.git",
+			"alias": "@rikalabs/repo-lint",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:24.408Z"
+		},
+		{
+			"url": "https://github.com/semantic-release/commit-analyzer.git",
+			"alias": "@semantic-release/commit-analyzer",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:24.929Z"
+		},
+		{
+			"url": "https://github.com/semantic-release/release-notes-generator.git",
+			"alias": "@semantic-release/release-notes-generator",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:25.420Z"
+		},
+		{
+			"url": "https://github.com/open-cli-tools/concurrently.git",
+			"alias": "concurrently",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:25.908Z"
+		},
+		{
+			"url": "https://github.com/streetsidesoftware/cspell.git",
+			"alias": "cspell",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:26.491Z"
+		},
+		{
+			"url": "https://github.com/webpro-nl/knip.git",
+			"alias": "knip",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:27.055Z"
+		},
+		{
+			"url": "https://github.com/igorshubovych/markdownlint-cli.git",
+			"alias": "markdownlint-cli",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:27.541Z"
+		},
+		{
+			"url": "https://github.com/oxc-project/tsgolint.git",
+			"alias": "oxlint-tsgolint",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:28.035Z"
+		},
+		{
+			"url": "https://github.com/semantic-release/semantic-release.git",
+			"alias": "semantic-release",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:28.544Z"
+		},
+		{
+			"url": "https://github.com/colinhacks/zod.git",
+			"alias": "zod",
+			"addedAt": "2026-04-07T21:27:59.706Z",
+			"lastSyncedAt": "2026-04-09T05:48:29.079Z"
+		},
+		{
+			"url": "https://github.com/coder/ghostty-web.git",
+			"alias": "ghostty-web",
+			"pin": {
+				"type": "tag",
+				"value": "v0.4.0"
+			},
+			"addedAt": "2026-04-07T21:30:40.574Z",
+			"lastSyncedAt": "2026-04-09T05:48:29.548Z"
+		},
+		{
+			"url": "https://github.com/pingdotgg/t3code.git",
+			"alias": "t3code",
+			"addedAt": "2026-04-08T15:06:36.592Z",
+			"lastSyncedAt": "2026-04-09T05:48:30.044Z"
+		},
+		{
+			"url": "https://github.com/pierrecomputer/pierre.git",
+			"alias": "pierre",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-15T21:49:21.951Z",
+			"lastSyncedAt": "2026-04-15T21:49:21.951Z"
+		},
+		{
+			"url": "https://github.com/openai/codex.git",
+			"alias": "codex",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"sparse": [
+				"codex-rs/app-server",
+				"codex-rs/app-server-protocol",
+				"sdk/typescript",
+				"docs"
+			],
+			"addedAt": "2026-04-17T16:02:55.975Z",
+			"lastSyncedAt": "2026-04-17T16:02:55.975Z"
+		},
+		{
+			"url": "https://github.com/legions-developer/evilcharts.git",
+			"alias": "evilcharts",
+			"pin": {
+				"type": "branch",
+				"value": "main"
+			},
+			"addedAt": "2026-04-30T20:17:57.499Z",
+			"lastSyncedAt": "2026-04-30T20:17:57.499Z"
+		}
+	]
+}

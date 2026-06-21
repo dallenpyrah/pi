@@ -1,0 +1,152 @@
+{
+  "providers": {
+    "vibeproxy": {
+      "name": "VibeProxy (Codex)",
+      "api": "openai-completions",
+      "apiKey": "vibeproxy",
+      "baseUrl": "http://127.0.0.1:8317/v1",
+      "models": [
+        {
+          "id": "gpt-5.5",
+          "reasoning": true,
+          "contextWindow": 272000,
+          "maxTokens": 128000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "gpt-5.4",
+          "reasoning": true,
+          "contextWindow": 272000,
+          "maxTokens": 128000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "gpt-5.4-mini",
+          "reasoning": true,
+          "contextWindow": 272000,
+          "maxTokens": 128000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "gpt-5.3-codex-spark",
+          "reasoning": true,
+          "contextWindow": 128000,
+          "maxTokens": 128000,
+          "input": ["text"]
+        },
+        {
+          "id": "codex-auto-review",
+          "input": ["text"]
+        }
+      ]
+    },
+    "vibeproxy-claude": {
+      "name": "VibeProxy (Claude)",
+      "api": "anthropic-messages",
+      "apiKey": "vibeproxy",
+      "baseUrl": "http://127.0.0.1:8317",
+      "models": [
+        {
+          "id": "claude-fable-5",
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "maxTokens": 128000,
+          "input": ["text", "image"],
+          "compat": { "forceAdaptiveThinking": true },
+          "thinkingLevelMap": { "xhigh": "xhigh" }
+        },
+        {
+          "id": "claude-opus-4-8",
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "maxTokens": 128000,
+          "input": ["text", "image"],
+          "compat": { "forceAdaptiveThinking": true },
+          "thinkingLevelMap": { "xhigh": "xhigh" }
+        },
+        {
+          "id": "claude-opus-4-7",
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "maxTokens": 128000,
+          "input": ["text", "image"],
+          "compat": { "forceAdaptiveThinking": true },
+          "thinkingLevelMap": { "xhigh": "xhigh" }
+        },
+        {
+          "id": "claude-opus-4-6",
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "maxTokens": 128000,
+          "input": ["text", "image"],
+          "compat": { "forceAdaptiveThinking": true },
+          "thinkingLevelMap": { "xhigh": "max" }
+        },
+        {
+          "id": "claude-sonnet-4-6",
+          "reasoning": true,
+          "contextWindow": 1000000,
+          "maxTokens": 64000,
+          "input": ["text", "image"],
+          "compat": { "forceAdaptiveThinking": true }
+        },
+        {
+          "id": "claude-haiku-4-5-20251001",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 64000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-opus-4-5-20251101",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 64000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-sonnet-4-5-20250929",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 64000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-opus-4-1-20250805",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 32000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-opus-4-20250514",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 32000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-sonnet-4-20250514",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 64000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-3-7-sonnet-20250219",
+          "reasoning": true,
+          "contextWindow": 200000,
+          "maxTokens": 64000,
+          "input": ["text", "image"]
+        },
+        {
+          "id": "claude-3-5-haiku-20241022",
+          "reasoning": false,
+          "contextWindow": 200000,
+          "maxTokens": 8192,
+          "input": ["text", "image"]
+        }
+      ]
+    }
+  }
+}

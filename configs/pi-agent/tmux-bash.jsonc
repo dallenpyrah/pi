@@ -1,0 +1,14 @@
+{
+  "defaultTimeoutSeconds": 30,
+  "defaultTimeoutAction": "background",
+  "maxTimeoutSeconds": 60,
+  "bashPollIntervalEnabled": true,
+  "tmuxEnabledActions": ["list", "list-polls", "peek", "kill", "poll", "unpoll"],
+  "defaultPollInterval": 0,
+  "pollDelivery": "model",
+  "minimumPollIntervalSeconds": 10,
+  "tmuxSessionScope": "git-root",
+  "tmuxWindowScope": "pi-session",
+  "autoCloseWindowsOnCompletion": true,
+  "preserveOutputFiles": true
+}

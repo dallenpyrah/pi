@@ -1,0 +1,34 @@
+{
+  "name": "@dallenpyrah/pi",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Dallen Pyrah's shareable Pi setup: configs, skills, prompts, themes, and extensions.",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "agent-skills"
+  ],
+  "scripts": {
+    "sync": "bash scripts/sync-from-local.sh",
+    "install:local": "bash scripts/install.sh",
+    "verify": "node scripts/verify-no-secrets.mjs"
+  },
+  "dependencies": {
+    "effect": "^4.0.0-beta.66"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/fff-defaults.ts"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "themes": [
+      "./themes"
+    ]
+  }
+}
