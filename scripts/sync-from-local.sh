@@ -25,7 +25,7 @@ COMMON_EXCLUDES=(
 
 rsync -a --delete "${COMMON_EXCLUDES[@]}" "$AGENTS_HOME/skills/" "$ROOT/skills/"
 if [ -d "$PI_HOME/skills" ]; then
-  rsync -aL "${COMMON_EXCLUDES[@]}" "$PI_HOME/skills/" "$ROOT/skills/"
+  rsync -aL "${COMMON_EXCLUDES[@]}" --exclude='code-search/' "$PI_HOME/skills/" "$ROOT/skills/"
 fi
 if [ -d "$PI_HOME/extensions" ]; then
   rsync -a --delete "${COMMON_EXCLUDES[@]}" --exclude='*.tar.gz' --exclude='semantic-search/' "$PI_HOME/extensions/" "$ROOT/extensions/"

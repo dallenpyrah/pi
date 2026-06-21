@@ -81,7 +81,6 @@ bun run verify
 | `architect` | Re-derives clean architecture from first principles before implementation. |
 | `ask-matt` | Routes ambiguous requests to the right Matt-style workflow or skill. |
 | `code-review` | Runs focused multi-persona PR review across correctness, tests, maintainability, standards, security, and prior findings. |
-| `code-search` | Finds code, docs, and symbols by meaning instead of scattered grep/read loops. |
 | `codebase-design` | Provides deep-module vocabulary for API seams, testability, and AI-navigable architecture. |
 | `decision-mapping` | Captures decision context, options, tradeoffs, and rationale. |
 | `design-an-interface` | Explores multiple radically different API/interface designs before choosing a module shape. |

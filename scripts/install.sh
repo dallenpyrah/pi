@@ -12,6 +12,8 @@ mkdir -p \
   "$AGENTS_HOME/skills" \
   "$AGENTS_HOME/shelf"
 
+rm -rf "$PI_HOME/skills/code-search"
+
 rsync -a --exclude='.gitkeep' "$ROOT/configs/pi-agent/" "$PI_HOME/"
 rsync -a --exclude='.gitkeep' "$ROOT/extensions/" "$PI_HOME/extensions/"
 rsync -a --exclude='.gitkeep' "$ROOT/prompts/" "$PI_HOME/prompts/"
