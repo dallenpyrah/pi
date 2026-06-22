@@ -11,19 +11,30 @@
     "agent-skills"
   ],
   "scripts": {
+    "postinstall": "bash scripts/disable-opencode-web-autostart.sh || true",
     "sync": "bash scripts/sync-from-local.sh",
     "install:local": "bash scripts/install.sh",
+    "disable:opencode-web": "bash scripts/disable-opencode-web-autostart.sh",
     "verify": "bun scripts/verify-no-secrets.mjs"
   },
   "dependencies": {
+    "@ygncode/pi-web": "^0.0.1-beta.34",
     "effect": "^4.0.0-beta.66"
   },
+  "bundledDependencies": [
+    "@ygncode/pi-web"
+  ],
+  "trustedDependencies": [
+    "@ygncode/pi-web"
+  ],
   "pi": {
     "extensions": [
-      "./extensions/fff-defaults.ts"
+      "./extensions/fff-defaults.ts",
+      "./node_modules/@ygncode/pi-web/.pi/extensions"
     ],
     "skills": [
-      "./skills"
+      "./skills",
+      "./node_modules/@ygncode/pi-web/.pi/skills"
     ],
     "prompts": [
       "./prompts"

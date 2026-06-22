@@ -11,6 +11,7 @@
     "npm:@narumitw/pi-goal",
     "npm:@amaster.ai/pi-computer-use",
     "npm:pi-agent-browser-native",
+    "npm:@ygncode/pi-web",
     "npm:@quintinshaw/pi-dynamic-workflows",
     "npm:pi-mcp-adapter",
     "npm:@plannotator/pi-extension",

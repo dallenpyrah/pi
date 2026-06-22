@@ -11,7 +11,9 @@ pi install git:https://github.com/dallenpyrah/pi.git
 That loads the package resources declared in `package.json`:
 
 - `extensions/fff-defaults.ts`
+- pi-web browser remote-control extensions from `@ygncode/pi-web`
 - every skill in `skills/`
+- pi-web's bundled memory skill
 - prompt templates in `prompts/`
 - themes in `themes/`
 
@@ -23,7 +25,7 @@ cd ~/projects/pi
 bun run install:local
 ```
 
-`install:local` copies the snapshot into `~/.pi/agent` and `~/.agents`. It does not copy secrets and does not delete existing local files.
+`install:local` copies the snapshot into `~/.pi/agent` and `~/.agents`, installs pi-web through Pi when `pi` is on `PATH`, and disables opencode-web auto-start entries. It does not copy secrets and does not delete existing local files outside the managed resource directories.
 
 ## Refresh this repo from my machine
 
@@ -41,7 +43,7 @@ bun run verify
 | --- | --- |
 | `configs/pi-agent/` | Snapshot of safe `~/.pi/agent` config files. |
 | `configs/agents/` | Snapshot of safe `~/.agents` metadata. |
-| `extensions/` | Active and supporting Pi extension files. Only `fff-defaults.ts` is loaded by this package manifest. |
+| `extensions/` | Active and supporting Pi extension files. The package manifest loads `fff-defaults.ts` plus pi-web's bundled extension directory. |
 | `skills/` | Active shared skills from `~/.agents/skills` plus dereferenced global Pi skills. |
 | `prompts/` | Prompt templates. |
 | `themes/` | Custom themes. |
@@ -59,6 +61,7 @@ bun run verify
 | Goal Mode | `npm:@narumitw/pi-goal` | Adds `/goal` and `goal_complete` so long tasks keep moving until verified completion. |
 | Computer Use | `npm:@amaster.ai/pi-computer-use` | Adds desktop automation tools for local GUI actions outside browser automation. |
 | Agent Browser Native | `npm:pi-agent-browser-native` | Adds `agent_browser` for browser workflows, web QA, screenshots, extraction, login flows, and Electron app automation. |
+| Pi Web | `npm:@ygncode/pi-web` | Adds browser remote control for Pi at `http://127.0.0.1:31415`, `/web`, `/pi-web`, `/remote`, `/refresh`, Tailscale Serve publishing, and launch-on-login setup. |
 | Dynamic Workflows | `npm:@quintinshaw/pi-dynamic-workflows` | Adds the `workflow` tool for deterministic JavaScript-orchestrated multi-agent fan-out/fan-in. |
 | MCP Adapter | `npm:pi-mcp-adapter` | Adds a single `mcp` gateway for discovering and calling MCP server tools without loading every schema into the prompt. |
 | Plannotator | `npm:@plannotator/pi-extension` | Adds browser-based markdown plan review, annotation, and approval flows for human feedback before implementation. |

@@ -25,5 +25,13 @@ if [ -f "$ROOT/configs/agents/.skill-lock.json" ]; then
   cp "$ROOT/configs/agents/.skill-lock.json" "$AGENTS_HOME/.skill-lock.json"
 fi
 
+if command -v pi >/dev/null 2>&1; then
+  pi install npm:@ygncode/pi-web
+else
+  echo "Skipped pi-web package install because pi is not on PATH."
+fi
+
+bash "$ROOT/scripts/disable-opencode-web-autostart.sh" || true
+
 echo "Installed Pi setup snapshot from $ROOT"
 echo "Restart Pi or run /reload in an active Pi session."
