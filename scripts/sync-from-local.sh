@@ -9,6 +9,7 @@ mkdir -p \
   "$ROOT/configs/pi-agent" \
   "$ROOT/configs/agents/shelf" \
   "$ROOT/extensions" \
+  "$ROOT/agents" \
   "$ROOT/skills" \
   "$ROOT/prompts" \
   "$ROOT/themes"
@@ -30,6 +31,9 @@ fi
 if [ -d "$PI_HOME/extensions" ]; then
   rsync -a --delete "${COMMON_EXCLUDES[@]}" --exclude='*.tar.gz' --exclude='semantic-search/' "$PI_HOME/extensions/" "$ROOT/extensions/"
   rm -f "$ROOT/extensions/package.json" "$ROOT/extensions/package-lock.json"
+fi
+if [ -d "$PI_HOME/agents" ]; then
+  rsync -a --delete "${COMMON_EXCLUDES[@]}" "$PI_HOME/agents/" "$ROOT/agents/"
 fi
 if [ -d "$PI_HOME/prompts" ]; then
   rsync -a --delete "${COMMON_EXCLUDES[@]}" "$PI_HOME/prompts/" "$ROOT/prompts/"

@@ -7,6 +7,7 @@ AGENTS_HOME="$HOME/.agents"
 
 mkdir -p \
   "$PI_HOME/extensions" \
+  "$PI_HOME/agents" \
   "$PI_HOME/prompts" \
   "$PI_HOME/themes" \
   "$AGENTS_HOME/skills" \
@@ -16,6 +17,7 @@ rm -rf "$PI_HOME/skills/code-search"
 
 rsync -a --exclude='.gitkeep' "$ROOT/configs/pi-agent/" "$PI_HOME/"
 rsync -a --exclude='.gitkeep' "$ROOT/extensions/" "$PI_HOME/extensions/"
+rsync -a --delete --exclude='.gitkeep' "$ROOT/agents/" "$PI_HOME/agents/"
 rsync -a --exclude='.gitkeep' "$ROOT/prompts/" "$PI_HOME/prompts/"
 rsync -a --exclude='.gitkeep' "$ROOT/themes/" "$PI_HOME/themes/"
 rsync -a "$ROOT/skills/" "$AGENTS_HOME/skills/"
@@ -26,9 +28,9 @@ if [ -f "$ROOT/configs/agents/.skill-lock.json" ]; then
 fi
 
 if command -v pi >/dev/null 2>&1; then
-  pi install npm:@ygncode/pi-web
+  pi update --extensions || true
 else
-  echo "Skipped pi-web package install because pi is not on PATH."
+  echo "Skipped package reconciliation because pi is not on PATH."
 fi
 
 bash "$ROOT/scripts/disable-opencode-web-autostart.sh" || true

@@ -10,10 +10,12 @@ pi install git:https://github.com/dallenpyrah/pi.git
 
 That loads the package resources declared in `package.json`:
 
-- `extensions/amp-startup-screen.ts` — an animated, Amp-style "Welcome to Pi" startup screen (dot-matrix shimmer)
-- the `amp-dark` theme plus Amp-style appearance/editor/user-message extensions from the `amp-themes` package
+- `extensions/amp-startup-screen.ts` — an animated, Amp-style "Welcome to Pi" startup screen (compact braille dot-matrix shimmer)
+- `extensions/amp-modes.ts` — `/deep 1`, `/deep 2`, `/deep 3`, `/smart`, and `/rush` model/thinking presets
+- the `amp-dark` theme plus Amp-style appearance/editor/tool-display/user-message extensions from the `amp-themes` package
+- the `pi-subagents` extension, prompts, and a curated local agent set in `agents/`
 - every skill in `skills/`
-- pi-web's bundled memory skill
+- pi-web's bundled memory skill only (not pi-web's UI extensions)
 - prompt templates in `prompts/`
 - themes in `themes/`
 
@@ -25,7 +27,7 @@ cd ~/projects/pi
 bun run install:local
 ```
 
-`install:local` copies the snapshot into `~/.pi/agent` and `~/.agents`, installs pi-web through Pi when `pi` is on `PATH`, and disables opencode-web auto-start entries. It does not copy secrets and does not delete existing local files outside the managed resource directories.
+`install:local` copies the snapshot into `~/.pi/agent` and `~/.agents`, reconciles configured Pi packages when `pi` is on `PATH`, and disables opencode-web auto-start entries. It does not copy secrets and does not delete existing local files outside the managed resource directories.
 
 ## Refresh this repo from my machine
 
@@ -43,7 +45,8 @@ bun run verify
 | --- | --- |
 | `configs/pi-agent/` | Snapshot of safe `~/.pi/agent` config files. |
 | `configs/agents/` | Snapshot of safe `~/.agents` metadata. |
-| `extensions/` | Active Pi extension files. The package manifest loads `amp-startup-screen.ts` (the animated Welcome to Pi dot-matrix screen). Amp appearance/editor/user-message extensions come from the `amp-themes` package. |
+| `extensions/` | Active Pi extension files: compact Welcome to Pi startup plus AMP-like mode commands. Amp UI/tool rendering extensions come from the bundled `amp-themes` package. |
+| `agents/` | Curated Pi sub-agent definitions loaded by `pi-subagents`. |
 | `skills/` | Active shared skills from `~/.agents/skills` plus dereferenced global Pi skills. |
 | `prompts/` | Prompt templates. |
 | `themes/` | Custom themes. |
@@ -55,8 +58,10 @@ bun run verify
 
 | Extension/package | Source | Why it is here / what it is for |
 | --- | --- | --- |
-| Amp themes/UI | `npm:amp-themes` with `amp-appearance`, `amp-editor`, `amp-user-message` | Provides the `amp-dark` theme plus Amp-style appearance switching, editor chrome, and compact user-message rendering. |
-| Welcome to Pi | `extensions/amp-startup-screen.ts` | Local extension that renders an animated, Amp-style dot-matrix "Welcome to Pi" startup header, based on dotmatrix-style per-dot animation. |
+| Amp themes/UI | `npm:amp-themes` with `amp-appearance`, `amp-editor`, `amp-tool-display`, `amp-user-message` | Provides the `amp-dark` theme, bottom-fixed editor chrome, command palette, compact user messages, and Ctrl+O-collapsible tool rendering. |
+| Welcome to Pi | `extensions/amp-startup-screen.ts` | Local extension that renders an animated, compact braille dot-matrix "Welcome to Pi" startup header, based on dotmatrix-style per-dot animation. |
+| AMP modes | `extensions/amp-modes.ts` | Adds `/deep 1`, `/deep 2`, `/deep 3`, `/smart`, and `/rush` commands for the preferred model/thinking presets. |
+| Subagents | `npm:pi-subagents` plus `agents/` | Enables the `subagent` tool and only the curated named agents: `review`, `search`, `Oracle`, `Librarian`, `Read`, `ViewMedia`, and `Titling`. Builtin subagents are disabled in settings. |
 
 
 ### Skills

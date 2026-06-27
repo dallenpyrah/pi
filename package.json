@@ -19,27 +19,45 @@
   },
   "dependencies": {
     "@ygncode/pi-web": "^0.0.1-beta.34",
+    "amp-themes": "^0.4.1",
+    "pi-subagents": "^0.30.0",
     "effect": "^4.0.0-beta.66"
   },
   "bundledDependencies": [
-    "@ygncode/pi-web"
+    "@ygncode/pi-web",
+    "amp-themes",
+    "pi-subagents"
   ],
   "trustedDependencies": [
     "@ygncode/pi-web"
   ],
   "pi": {
     "extensions": [
-      "./extensions/amp-startup-screen.ts"
+      "./extensions/amp-startup-screen.ts",
+      "./extensions/amp-modes.ts",
+      "./node_modules/amp-themes/extensions/amp-appearance.ts",
+      "./node_modules/amp-themes/extensions/amp-editor.ts",
+      "./node_modules/amp-themes/extensions/amp-tool-display.ts",
+      "./node_modules/amp-themes/extensions/amp-user-message.ts",
+      "./node_modules/pi-subagents/src/extension/index.ts"
     ],
     "skills": [
       "./skills",
-      "./node_modules/@ygncode/pi-web/.pi/skills"
+      "./node_modules/@ygncode/pi-web/.pi/skills",
+      "./node_modules/pi-subagents/skills"
     ],
     "prompts": [
-      "./prompts"
+      "./prompts",
+      "./node_modules/pi-subagents/prompts"
     ],
     "themes": [
-      "./themes"
-    ]
+      "./themes",
+      "./node_modules/amp-themes/themes"
+    ],
+    "subagents": {
+      "agents": [
+        "./agents"
+      ]
+    }
   }
 }

@@ -1,22 +1,35 @@
 {
   "defaultModel": "gpt-5.5",
-  "defaultProvider": "openai-codex",
-  "defaultThinkingLevel": "xhigh",
+  "defaultProvider": "vibeproxy",
+  "defaultThinkingLevel": "high",
   "transport": "websocket-cached",
-  "lastChangelogVersion": "0.79.9",
+  "lastChangelogVersion": "0.80.1",
+  "enabledModels": [
+    "vibeproxy/gpt-5.5:high",
+    "vibeproxy-claude/claude-opus-4-8:xhigh",
+    "vibeproxy/gpt-5.5:off"
+  ],
+  "hideThinkingBlock": true,
   "packages": [
     {
       "source": "npm:amp-themes",
       "extensions": [
         "extensions/amp-appearance.ts",
         "extensions/amp-editor.ts",
+        "extensions/amp-tool-display.ts",
         "extensions/amp-user-message.ts"
       ]
-    }
+    },
+    "npm:pi-subagents"
   ],
   "theme": "amp-dark",
   "extensions": [
-    "extensions/amp-startup-screen.ts"
+    "extensions/amp-startup-screen.ts",
+    "extensions/amp-modes.ts"
   ],
-  "quietStartup": true
+  "subagents": {
+    "disableBuiltins": true
+  },
+  "quietStartup": true,
+  "enableInstallTelemetry": false
 }

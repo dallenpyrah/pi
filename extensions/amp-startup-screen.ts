@@ -1,18 +1,19 @@
 /**
  * Amp-style animated dot-matrix startup screen for Pi.
  *
- * Ports the engine from the `dotmatrix` library (zzzzshawn/matrix, MIT):
- * a circular-masked grid whose per-dot brightness is driven by an animation
- * "resolver" plus a stepped phase clock. The original renders a 5x5 web loader;
- * here the grid is parameterized to fill a large terminal dot sphere and the
- * per-dot opacity is mapped to ANSI color/brightness instead of CSS opacity.
+ * Ports the engine shape from `dotmatrix` (zzzzshawn/matrix, MIT):
+ * circular mask + per-dot opacity resolver + stepped animation clock. The web
+ * library renders CSS dots; this terminal version packs logical dots into
+ * Unicode braille cells so the matrix stays compact and tiny like Amp.
  */
 import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 
-// Logical grid (rows x cols). Cols are rendered with a trailing space so each
-// dot occupies a ~square visual cell in the terminal.
-const ROWS = 21;
-const COLS = 29;
+// Dense logical matrix packed into braille: each rendered character contains
+// a 2x4 dot cell. This keeps the sphere compact and smaller than text dots.
+const DOT_ROWS = 80;
+const DOT_COLS = 92;
+const CELL_DOT_ROWS = 4;
+const CELL_DOT_COLS = 2;
 
 const AMP_GREEN = "#84ecb3";
 const AMP_CYAN = "#4bb7ce";
@@ -22,28 +23,31 @@ const AMP_TEXT = "#eeeeee";
 
 const COPY_WIDTH = 28;
 const STEP_MS = 90;
+const CLEAR_SCREEN = "\x1b[2J\x1b[3J\x1b[H";
 
-// --- dotmatrix core primitives (generalized to ROWS x COLS) ---
+const CX = (DOT_COLS - 1) / 2;
+const CY = (DOT_ROWS - 1) / 2;
 
-const CX = (COLS - 1) / 2;
-const CY = (ROWS - 1) / 2;
+const BRAILLE_BITS = [
+  [0x01, 0x08],
+  [0x02, 0x10],
+  [0x04, 0x20],
+  [0x40, 0x80],
+] as const;
 
 function normalizedRadius(row: number, col: number): number {
-  const nx = (col - CX) / (COLS / 2);
-  const ny = (row - CY) / (ROWS / 2);
+  const nx = (col - CX) / (DOT_COLS / 2);
+  const ny = (row - CY) / (DOT_ROWS / 2);
   return Math.hypot(nx, ny);
 }
 
 function polarAngle(row: number, col: number): number {
-  return Math.atan2((row - CY) / (ROWS / 2), (col - CX) / (COLS / 2));
+  return Math.atan2((row - CY) / (DOT_ROWS / 2), (col - CX) / (DOT_COLS / 2));
 }
 
-// Circular mask: keep dots inside the unit disc (the library masks corners).
 function isWithinCircularMask(row: number, col: number): boolean {
-  return normalizedRadius(row, col) <= 1.02;
+  return normalizedRadius(row, col) <= 1.015;
 }
-
-// --- color helpers ---
 
 function rgb(color: string): [number, number, number] {
   return [
@@ -62,61 +66,83 @@ function bold(text: string): string {
 }
 
 function gradient(row: number): [number, number, number] {
-  const amount = row / (ROWS - 1);
+  const amount = row / (DOT_ROWS - 1);
   const [ar, ag, ab] = rgb(AMP_GREEN);
   const [br, bg, bb] = rgb(AMP_CYAN);
   const [cr, cg, cb] = rgb(AMP_BLUE);
-  if (amount < 0.52) {
-    const t = amount / 0.52;
+  if (amount < 0.5) {
+    const t = amount / 0.5;
     return [ar + (br - ar) * t, ag + (bg - ag) * t, ab + (bb - ab) * t];
   }
-  const t = (amount - 0.52) / 0.48;
+  const t = (amount - 0.5) / 0.5;
   return [br + (cr - br) * t, bg + (cg - bg) * t, bb + (cb - bb) * t];
 }
 
-// --- animation resolver: returns per-dot "opacity" 0..1 (dotmatrix style) ---
-// loadingRipple: concentric rings emanating outward, plus a slow swirl so it
-// reads like Amp's shimmering sphere rather than a perfect bullseye.
+// dotmatrix-style resolver: returns per-logical-dot opacity 0..1.
 function resolveOpacity(row: number, col: number, step: number): number {
   const r = normalizedRadius(row, col);
   const angle = polarAngle(row, col);
-  const phase = step * 0.22;
+  const phase = step * 0.18;
 
-  const ripple = Math.sin(r * 6.5 - phase * 2.0);
-  const swirl = Math.sin(angle * 2 + r * 3.0 - phase * 1.3);
-  const combined = ripple * 0.62 + swirl * 0.38; // -1..1
-
-  // Bias brighter toward the center, fading at the rim.
-  const rimFalloff = 1 - Math.min(1, r) * 0.35;
+  const ripple = Math.sin(r * 9.5 - phase * 2.3);
+  const swirl = Math.sin(angle * 2.2 + r * 4.5 - phase * 1.35);
+  const diagonal = Math.sin((col - row * 0.45) * 0.16 - phase * 1.6);
+  const combined = ripple * 0.42 + swirl * 0.32 + diagonal * 0.26;
+  const rimFalloff = 1 - Math.min(1, r) * 0.45;
   return Math.max(0, Math.min(1, (combined * 0.5 + 0.5) * rimFalloff));
+}
+
+function brailleBit(dotRow: number, dotCol: number): number {
+  return BRAILLE_BITS[dotRow]?.[dotCol] ?? 0;
 }
 
 function renderLogo(step: number): string[] {
   const lines: string[] = [];
-  for (let row = 0; row < ROWS; row += 1) {
+
+  for (let cellRow = 0; cellRow < DOT_ROWS; cellRow += CELL_DOT_ROWS) {
     let line = "";
-    for (let col = 0; col < COLS; col += 1) {
-      if (!isWithinCircularMask(row, col)) {
-        line += "  ";
+
+    for (let cellCol = 0; cellCol < DOT_COLS; cellCol += CELL_DOT_COLS) {
+      let bits = 0;
+      let opacityTotal = 0;
+      let count = 0;
+      let rowTotal = 0;
+
+      for (let dy = 0; dy < CELL_DOT_ROWS; dy += 1) {
+        for (let dx = 0; dx < CELL_DOT_COLS; dx += 1) {
+          const row = cellRow + dy;
+          const col = cellCol + dx;
+          if (row >= DOT_ROWS || col >= DOT_COLS || !isWithinCircularMask(row, col)) continue;
+          bits |= brailleBit(dy, dx);
+          opacityTotal += resolveOpacity(row, col, step);
+          rowTotal += row;
+          count += 1;
+        }
+      }
+
+      if (bits === 0 || count === 0) {
+        line += " ";
         continue;
       }
-      const opacity = resolveOpacity(row, col, step);
-      const lit = opacity > 0.6;
-      const [gr, gg, gb] = gradient(row);
+
+      const opacity = opacityTotal / count;
+      const avgRow = rowTotal / count;
+      const [gr, gg, gb] = gradient(avgRow);
       const [hr, hg, hb] = rgb(AMP_GREEN);
-      // Dim dots recede; lit crests brighten and pull toward Amp green.
-      const brightness = 0.22 + opacity * 0.95;
-      const litMix = lit ? 0.45 : 0;
-      line +=
-        fgRgb(
-          gr * brightness * (1 - litMix) + hr * litMix,
-          gg * brightness * (1 - litMix) + hg * litMix,
-          gb * brightness * (1 - litMix) + hb * litMix,
-          lit ? "\u2022" : "\u00b7",
-        ) + " ";
+      const brightness = 0.16 + opacity * 0.95;
+      const litMix = opacity > 0.58 ? 0.38 : 0;
+      const char = String.fromCharCode(0x2800 + bits);
+      line += fgRgb(
+        gr * brightness * (1 - litMix) + hr * litMix,
+        gg * brightness * (1 - litMix) + hg * litMix,
+        gb * brightness * (1 - litMix) + hb * litMix,
+        char,
+      );
     }
+
     lines.push(line.replace(/\s+$/, ""));
   }
+
   return lines;
 }
 
@@ -129,7 +155,11 @@ function padRight(text: string, width: number): string {
 }
 
 function logoSpan(): number {
-  return COLS * 2 - 1;
+  return Math.ceil(DOT_COLS / CELL_DOT_COLS);
+}
+
+function center(text: string, width: number): string {
+  return " ".repeat(Math.max(0, Math.floor((width - visibleLength(text)) / 2))) + text;
 }
 
 function renderScreen(step: number, width: number): string[] {
@@ -143,7 +173,7 @@ function renderScreen(step: number, width: number): string[] {
     const gap = 8;
     const total = span + gap + COPY_WIDTH;
     const left = Math.max(0, Math.floor((width - total) / 2));
-    const copyStart = Math.floor(ROWS / 2) - 3;
+    const copyStart = Math.floor(logo.length / 2) - 3;
     return logo.map((line, index) => {
       const copy =
         index === copyStart
@@ -157,14 +187,17 @@ function renderScreen(step: number, width: number): string[] {
     });
   }
 
-  const center = (text: string) =>
-    " ".repeat(Math.max(0, Math.floor((width - visibleLength(text)) / 2))) + text;
-  return [...logo.map(center), "", center(title), "", center(commands), center(shortcuts)];
+  return [...logo.map((line) => center(line, width)), "", center(title, width), "", center(commands, width), center(shortcuts, width)];
 }
 
 export default function ampStartupScreen(pi: ExtensionAPI) {
   pi.on("session_start", (_event, ctx) => {
     if (ctx.mode !== "tui") return;
+
+    // Amp starts from a clean viewport. Clear prompt/cwd text left by the shell
+    // before Pi's TUI begins drawing.
+    process.stdout.write(CLEAR_SCREEN);
+    ctx.ui.setTitle("pi");
 
     ctx.ui.setHeader((tui) => {
       let step = 0;
@@ -176,8 +209,9 @@ export default function ampStartupScreen(pi: ExtensionAPI) {
       return {
         render(width: number): string[] {
           const content = renderScreen(step, width);
-          // Keep the editor pinned at the bottom by filling vertical space above it.
-          const available = Math.max(content.length, tui.terminal.rows - 9);
+          // Fill almost all rows above the editor so the input remains bottom-fixed.
+          const editorReserveRows = 5;
+          const available = Math.max(content.length, tui.terminal.rows - editorReserveRows);
           const top = Math.max(1, Math.min(18, Math.floor((available - content.length) / 2)));
           const bottom = Math.max(0, available - content.length - top);
           return [
