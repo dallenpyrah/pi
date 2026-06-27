@@ -5,16 +5,6 @@
   "transport": "websocket-cached",
   "lastChangelogVersion": "0.79.9",
   "packages": [
-    "npm:@ff-labs/pi-fff",
-    "npm:context-mode",
-    "npm:pi-subagents",
-    "npm:@narumitw/pi-goal",
-    "npm:@amaster.ai/pi-computer-use",
-    "npm:pi-agent-browser-native",
-    "npm:@ygncode/pi-web",
-    "npm:@quintinshaw/pi-dynamic-workflows",
-    "npm:pi-mcp-adapter",
-    "npm:@plannotator/pi-extension",
     {
       "source": "npm:amp-themes",
       "extensions": [
@@ -22,17 +12,11 @@
         "extensions/amp-editor.ts",
         "extensions/amp-user-message.ts"
       ]
-    },
-    "npm:@juicesharp/rpiv-ask-user-question",
-    "npm:pi-diet-ast",
-    "npm:pi-hashline-edit",
-    "npm:@richardgill/pi-tmux-bash",
-    "npm:pi-openai-fast-mode",
-    "git:https://github.com/dallenpyrah/pi-exa.git",
-    "git:https://github.com/dallenpyrah/pi-semantic-search.git"
+    }
   ],
   "theme": "amp-dark",
   "extensions": [
-    "extensions/fff-defaults.ts"
-  ]
+    "extensions/amp-startup-screen.ts"
+  ],
+  "quietStartup": true
 }

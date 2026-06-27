@@ -29,8 +29,7 @@
   ],
   "pi": {
     "extensions": [
-      "./extensions/fff-defaults.ts",
-      "./node_modules/@ygncode/pi-web/.pi/extensions"
+      "./extensions/amp-startup-screen.ts"
     ],
     "skills": [
       "./skills",

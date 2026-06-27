@@ -10,8 +10,8 @@ pi install git:https://github.com/dallenpyrah/pi.git
 
 That loads the package resources declared in `package.json`:
 
-- `extensions/fff-defaults.ts`
-- pi-web browser remote-control extensions from `@ygncode/pi-web`
+- `extensions/amp-startup-screen.ts` — an animated, Amp-style "Welcome to Pi" startup screen (dot-matrix shimmer)
+- the `amp-dark` theme plus Amp-style appearance/editor/user-message extensions from the `amp-themes` package
 - every skill in `skills/`
 - pi-web's bundled memory skill
 - prompt templates in `prompts/`
@@ -43,7 +43,7 @@ bun run verify
 | --- | --- |
 | `configs/pi-agent/` | Snapshot of safe `~/.pi/agent` config files. |
 | `configs/agents/` | Snapshot of safe `~/.agents` metadata. |
-| `extensions/` | Active and supporting Pi extension files. The package manifest loads `fff-defaults.ts` plus pi-web's bundled extension directory. |
+| `extensions/` | Active Pi extension files. The package manifest loads `amp-startup-screen.ts` (the animated Welcome to Pi dot-matrix screen). Amp appearance/editor/user-message extensions come from the `amp-themes` package. |
 | `skills/` | Active shared skills from `~/.agents/skills` plus dereferenced global Pi skills. |
 | `prompts/` | Prompt templates. |
 | `themes/` | Custom themes. |
@@ -55,25 +55,9 @@ bun run verify
 
 | Extension/package | Source | Why it is here / what it is for |
 | --- | --- | --- |
-| FFF Search | `npm:@ff-labs/pi-fff` | Replaces file/content search with FFF-backed ranked search, multi-grep, and `@` autocomplete for faster repo discovery. |
-| Context Mode | `npm:context-mode` | Adds sandbox execution, file/output indexing, FTS search, fetch-and-index, and diagnostics so large logs/docs/test output do not flood chat context. |
-| Pi Subagents | `npm:pi-subagents` | Runs delegated child agents, chains, parallel fan-out, async status checks, and optional worktree isolation for review and broad analysis. |
-| Goal Mode | `npm:@narumitw/pi-goal` | Adds `/goal` and `goal_complete` so long tasks keep moving until verified completion. |
-| Computer Use | `npm:@amaster.ai/pi-computer-use` | Adds desktop automation tools for local GUI actions outside browser automation. |
-| Agent Browser Native | `npm:pi-agent-browser-native` | Adds `agent_browser` for browser workflows, web QA, screenshots, extraction, login flows, and Electron app automation. |
-| Pi Web | `npm:@ygncode/pi-web` | Adds browser remote control for Pi at `http://127.0.0.1:31415`, `/web`, `/pi-web`, `/remote`, `/refresh`, Tailscale Serve publishing, and launch-on-login setup. |
-| Dynamic Workflows | `npm:@quintinshaw/pi-dynamic-workflows` | Adds the `workflow` tool for deterministic JavaScript-orchestrated multi-agent fan-out/fan-in. |
-| MCP Adapter | `npm:pi-mcp-adapter` | Adds a single `mcp` gateway for discovering and calling MCP server tools without loading every schema into the prompt. |
-| Plannotator | `npm:@plannotator/pi-extension` | Adds browser-based markdown plan review, annotation, and approval flows for human feedback before implementation. |
 | Amp themes/UI | `npm:amp-themes` with `amp-appearance`, `amp-editor`, `amp-user-message` | Provides the `amp-dark` theme plus Amp-style appearance switching, editor chrome, and compact user-message rendering. |
-| Structured questions | `npm:@juicesharp/rpiv-ask-user-question` | Adds `ask_user_question` for structured clarification when requirements are ambiguous. |
-| AST search/replace | `npm:pi-diet-ast` | Adds `ast_grep_search` and dry-run-first `ast_grep_replace` for syntax-aware code discovery and codemods. |
-| Hashline edit | `npm:pi-hashline-edit` | Replaces plain edits with hash-anchored reads/edits so stale-context mutations are rejected. |
-| Tmux Bash | `npm:@richardgill/pi-tmux-bash` | Runs shell commands in tmux windows with stable IDs, background polling, and inspection controls for long-running commands. |
-| OpenAI Fast Mode | `npm:pi-openai-fast-mode` | Adds `/fast` and `--fast` priority-tier toggles for configured GPT-5.4/5.5 OpenAI targets. |
-| Exa web research | `git:https://github.com/dallenpyrah/pi-exa.git` | Adds native Exa tools for live web search, sourced answers, content extraction, similar pages, code/company/people lookup, and deep research. |
-| Semantic Search | `git:https://github.com/dallenpyrah/pi-semantic-search.git` | Adds `semantic_search` for hybrid code, history, and conversation search as the first-pass codebase discovery layer. |
-| FFF defaults | `extensions/fff-defaults.ts` | Local extension that sets FFF mode and injects guidance to prefer FFF and AST search before raw shell search. |
+| Welcome to Pi | `extensions/amp-startup-screen.ts` | Local extension that renders an animated, Amp-style dot-matrix "Welcome to Pi" startup header, based on dotmatrix-style per-dot animation. |
+
 
 ### Skills
 
